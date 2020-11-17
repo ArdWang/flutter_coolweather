@@ -6,8 +6,16 @@ import 'package:flutter/material.dart';
 class DrawerLeftPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('天气'),
+      ),
+
+      body: Text(
+          "Drawer"
+      ),
+
+    );
   }
 
 
