@@ -23,6 +23,8 @@ class _WeatherPageState extends State<WeatherPage> {
   //默认页面加载中。。。
   LoadState _loadState = LoadState.State_Loading;
 
+  String name = "111";
+
   @override
   void initState() {
 
@@ -32,7 +34,7 @@ class _WeatherPageState extends State<WeatherPage> {
     provinceList = _getProvinceList();
 
    // provinceList = stateList[0].data;
-
+    name = provinceList[0].name;
 
   }
 
@@ -44,7 +46,7 @@ class _WeatherPageState extends State<WeatherPage> {
       ),
 
       body: Text(
-        provinceList[0].name
+        name
       ),
 
     );
