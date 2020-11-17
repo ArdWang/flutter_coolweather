@@ -17,15 +17,15 @@ class _IndexPageState extends State<IndexPage> {
   final List<BottomNavigationBarItem> bottomTabs = [
     BottomNavigationBarItem(
         icon: Icon(CupertinoIcons.home),
-        label: '首页'
+        title: Text('首页')
     ),
     BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.cloud),
-        label: '天气'
+        icon: Icon(CupertinoIcons.brightness),
+        title: Text('天气')
     ),
     BottomNavigationBarItem(
         icon: Icon(CupertinoIcons.heart),
-        label: '干货'
+        title: Text('干货')
     ),
   ];
 
