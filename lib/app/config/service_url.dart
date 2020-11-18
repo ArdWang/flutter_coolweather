@@ -15,6 +15,9 @@ const String APP_WEATHER_SERVICE_ADDRE = "https://free-api.heweather.com/";
 // 干货api接口
 const String APP_GANK_SERVICE_ADDRE = "http://gank.io/";
 
+//和风天气的Key
+const String APP_WEATHER_KEY = "c0d50dd43adb4a62aff5f3f728941082";
+
 
 const servicePath = {
   cityPageContent:'',

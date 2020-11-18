@@ -24,20 +24,19 @@ class StateProvider with ChangeNotifier{
   };
 
   //获取省份接口
-  getProvince(){
+  Future getProvince() async{
     HttpUtil.get(
       stateUrl,
       headers: headers,
       success: (resp){
        provinceList = StateModel.fromJson(resp).data;
-
-       print("dadsadasd");
-       // provinceList = StateModel.stateModelFromJson(resp);
       },
       error: (err){
         errorMsg = err;
       }
     );
+
+    notifyListeners();
   }
 
 

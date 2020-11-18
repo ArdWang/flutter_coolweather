@@ -63,6 +63,7 @@ flutter:
   assets:
     - assets/images/nodata.png
     - assets/images/loading.png
+    - assets/images/bg1.jpg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

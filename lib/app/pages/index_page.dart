@@ -49,7 +49,7 @@ class _IndexPageState extends State<IndexPage> {
     ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: false);
     return Scaffold(
       drawer: Drawer(
-          child: DrawerLeftPage(),
+        child: DrawerLeftPage(),
       ),
       backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
       bottomNavigationBar: BottomNavigationBar(
