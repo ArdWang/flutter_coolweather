@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
   自动把json数据生成model数据
   https://javiercbk.github.io/json_to_dart/
   国家的model数据
+  界面需要重新得去设计
 */
 
 
