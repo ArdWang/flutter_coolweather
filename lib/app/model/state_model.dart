@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 
+
 /*
   自动把json数据生成model数据
   https://javiercbk.github.io/json_to_dart/
@@ -10,6 +11,7 @@ import 'package:flutter/material.dart';
 
 
 class StateModel{
+
   List<ProvinceModel> data;
 
   StateModel({this.data});
@@ -30,6 +32,7 @@ class StateModel{
     }
     return data;
   }
+
 }
 
 
