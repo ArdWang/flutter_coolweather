@@ -8,6 +8,8 @@ import 'dart:async';
   2020 11/17 星期二
 */
 
+// https://javiercbk.github.io/json_to_dart/
+
 class HttpUtil {
 
   static void get(String url,
