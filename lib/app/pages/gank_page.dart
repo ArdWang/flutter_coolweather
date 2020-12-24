@@ -2,9 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_coolweather/app/model/gank_model.dart';
 import 'package:flutter_coolweather/app/provider/gank_provider.dart';
+import 'package:flutter_coolweather/app/utils/fade_route.dart';
 import 'package:flutter_coolweather/app/widgets/load_state_widget.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:photo_view/photo_view.dart';
+import 'package:photo_view/photo_view_gallery.dart';
 import 'package:provider/provider.dart';
+
+import 'gank/photo_gallery_page.dart';
 
 
 /*
@@ -119,21 +124,37 @@ class GankPage extends StatelessWidget{
     );
   }
 
-  Widget buildItem(BuildContext context, int index){
+  Widget buildItem(BuildContext context, int index) {
     var model = dataList[index];
-    return Container(
+    return InkWell(
+      onTap: () {
+        //FadeRoute是自定义的切换过度动画（渐隐渐现） 如果不需要 可以使用默认的MaterialPageRoute
+        Navigator.of(context).push(new FadeRoute(page: PhotoViewGalleryScreen(
+          images:model.images,//传入图片list
+          index: index,//传入当前点击的图片的index
+          heroTag: model.images[0],//传入当前点击的图片的hero tag （可选）
+        )));
+      },
       child: CachedNetworkImage(
         imageUrl: model.images[0],
-        placeholder: (context, url) => Container(
-          child: Center(
-            child: CircularProgressIndicator(),
-          ),
-          width: 100.0,
-          height: 90.0,
-        ),
-        errorWidget: (context,url,error) => Icon(Icons.error),
-        fit: BoxFit.cover
+        placeholder: (context, url) =>
+            Container(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+              width: 100.0,
+              height: 90.0,
+            ),
+        errorWidget: (context, url, error) => Icon(Icons.error),
+        fit: BoxFit.cover,
       ),
+    );
+  }
+
+
+
+
+
 
       //文字显示在下方
       /*child: Container(
@@ -150,14 +171,10 @@ class GankPage extends StatelessWidget{
             ),
           ],
         ),
-      ),*/
-    );
+      ),
+    );*/
 
 
-
-
-
-  }
 
 
   // 获取网络数据
