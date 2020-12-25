@@ -5,10 +5,7 @@ import 'package:flutter_coolweather/app/provider/gank_provider.dart';
 import 'package:flutter_coolweather/app/utils/fade_route.dart';
 import 'package:flutter_coolweather/app/widgets/load_state_widget.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:photo_view/photo_view.dart';
-import 'package:photo_view/photo_view_gallery.dart';
 import 'package:provider/provider.dart';
-
 import 'gank/photo_gallery_page.dart';
 
 
@@ -111,6 +108,7 @@ class GankPage extends StatelessWidget{
             await Future.delayed(Duration(milliseconds: 1000));
             //刷新的时候清除数据
             dataList.clear();
+            page = 1;
             mockNetworkData(context);
 
           },
@@ -129,8 +127,9 @@ class GankPage extends StatelessWidget{
     return InkWell(
       onTap: () {
         //FadeRoute是自定义的切换过度动画（渐隐渐现） 如果不需要 可以使用默认的MaterialPageRoute
-        Navigator.of(context).push(new FadeRoute(page: PhotoViewGalleryScreen(
+        Navigator.of(context).push(new FadeRoute(page: PhotoGalleryPage(
           images:model.images,//传入图片list
+          model: model,
           index: index,//传入当前点击的图片的index
           heroTag: model.images[0],//传入当前点击的图片的hero tag （可选）
         )));
@@ -151,11 +150,6 @@ class GankPage extends StatelessWidget{
     );
   }
 
-
-
-
-
-
       //文字显示在下方
       /*child: Container(
         child: Column(
@@ -173,8 +167,6 @@ class GankPage extends StatelessWidget{
         ),
       ),
     );*/
-
-
 
 
   // 获取网络数据

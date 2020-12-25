@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_coolweather/app/model/gank_model.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
 
-class PhotoViewGalleryScreen extends StatefulWidget {
+// ignore: must_be_immutable
+class PhotoGalleryPage extends StatefulWidget {
+  Data model;
   List images=[];
   int index=0;
   String heroTag;
   PageController controller;
 
-  PhotoViewGalleryScreen({Key key,@required this.images,this.index,this.controller,this.heroTag}) : super(key: key){
+  PhotoGalleryPage({Key key,@required this.images,this.model,this.index,this.controller,this.heroTag}) : super(key: key){
     controller=PageController(initialPage: index);
   }
 
   @override
-  _PhotoViewGalleryScreenState createState() => _PhotoViewGalleryScreenState();
+  _PhotoGalleryPageState createState() => _PhotoGalleryPageState();
 }
 
-class _PhotoViewGalleryScreenState extends State<PhotoViewGalleryScreen> {
+class _PhotoGalleryPageState extends State<PhotoGalleryPage> {
   int currentIndex=0;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     currentIndex=widget.index;
   }
@@ -44,7 +46,6 @@ class _PhotoViewGalleryScreenState extends State<PhotoViewGalleryScreen> {
                     return PhotoViewGalleryPageOptions(
                       imageProvider: NetworkImage(widget.images[index]),
                       heroAttributes: widget.heroTag.isNotEmpty?PhotoViewHeroAttributes(tag: widget.heroTag):null,
-
                     );
                   },
                   itemCount: widget.images.length,
@@ -77,6 +78,35 @@ class _PhotoViewGalleryScreenState extends State<PhotoViewGalleryScreen> {
               },
             ),
           ),
+          Positioned(
+              bottom: MediaQuery.of(context).padding.bottom,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  widget.model.author != null ?
+                  Text(
+                    widget.model.author,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontFamily: 'Courier',
+                    ),
+                  ):
+                  Text("未知"),
+                  widget.model.desc != null ?
+                  Text(
+                    widget.model.desc,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14.0,
+                      fontFamily: 'Courier',
+                    ),
+                  ):
+                  Text("这个人很赖啥也没有写"),
+                ],
+              )
+          )
+
         ],
       ),
     );
