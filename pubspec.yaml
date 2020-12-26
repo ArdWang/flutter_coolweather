@@ -66,6 +66,69 @@ flutter:
     - assets/images/nodata.png
     - assets/images/loading.png
     - assets/images/bg1.jpg
+    - assets/images/bg2.jpg
+    - assets/images/weather/100.png
+    - assets/images/weather/101.png
+    - assets/images/weather/102.png
+    - assets/images/weather/103.png
+    - assets/images/weather/104.png
+    - assets/images/weather/150.png
+    - assets/images/weather/153.png
+    - assets/images/weather/154.png
+    - assets/images/weather/300.png
+    - assets/images/weather/301.png
+    - assets/images/weather/302.png
+    - assets/images/weather/303.png
+    - assets/images/weather/304.png
+    - assets/images/weather/305.png
+    - assets/images/weather/306.png
+    - assets/images/weather/307.png
+    - assets/images/weather/308.png
+    - assets/images/weather/309.png
+    - assets/images/weather/310.png
+    - assets/images/weather/311.png
+    - assets/images/weather/312.png
+    - assets/images/weather/313.png
+    - assets/images/weather/314.png
+    - assets/images/weather/315.png
+    - assets/images/weather/316.png
+    - assets/images/weather/317.png
+    - assets/images/weather/318.png
+    - assets/images/weather/399.png
+    - assets/images/weather/350.png
+    - assets/images/weather/351.png
+    - assets/images/weather/400.png
+    - assets/images/weather/401.png
+    - assets/images/weather/402.png
+    - assets/images/weather/403.png
+    - assets/images/weather/404.png
+    - assets/images/weather/405.png
+    - assets/images/weather/406.png
+    - assets/images/weather/407.png
+    - assets/images/weather/408.png
+    - assets/images/weather/409.png
+    - assets/images/weather/410.png
+    - assets/images/weather/499.png
+    - assets/images/weather/456.png
+    - assets/images/weather/457.png
+    - assets/images/weather/500.png
+    - assets/images/weather/501.png
+    - assets/images/weather/502.png
+    - assets/images/weather/503.png
+    - assets/images/weather/504.png
+    - assets/images/weather/507.png
+    - assets/images/weather/508.png
+    - assets/images/weather/509.png
+    - assets/images/weather/510.png
+    - assets/images/weather/511.png
+    - assets/images/weather/512.png
+    - assets/images/weather/513.png
+    - assets/images/weather/514.png
+    - assets/images/weather/515.png
+    - assets/images/weather/900.png
+    - assets/images/weather/901.png
+    - assets/images/weather/999.png
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

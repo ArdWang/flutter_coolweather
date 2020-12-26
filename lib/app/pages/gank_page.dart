@@ -150,25 +150,6 @@ class GankPage extends StatelessWidget{
     );
   }
 
-      //文字显示在下方
-      /*child: Container(
-        child: Column(
-          children: [
-            Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    //model.author != null ? Text(model.author):Text("未知"),
-                    //model.desc != null ? Text(model.desc):Text("这个人很赖啥也没有写"),
-                  ],
-                ),
-            ),
-          ],
-        ),
-      ),
-    );*/
-
-
   // 获取网络数据
   Future<String> mockNetworkData(BuildContext context) async{
     await Provider.of<GankProvider>(context, listen: false).getGank(page.toString());

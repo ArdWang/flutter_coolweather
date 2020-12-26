@@ -4,7 +4,7 @@ import 'package:flutter_coolweather/app/pages/drawer_page.dart';
 import 'package:flutter_coolweather/app/pages/gank_page.dart';
 import 'package:flutter_coolweather/app/pages/home_page.dart';
 import 'package:flutter_coolweather/app/pages/weather_page.dart';
-import 'package:flutter_coolweather/app/pages/weather_new_page.dart';
+//import 'package:flutter_coolweather/app/pages/weather_new_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
@@ -32,7 +32,7 @@ class _IndexPageState extends State<IndexPage> {
 
   final List<Widget> tabBodies = [
     HomePage(),
-    WeatherNewPage(),
+    WeatherPage(),
     GankPage()
   ];
 

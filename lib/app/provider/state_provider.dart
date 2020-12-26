@@ -26,7 +26,6 @@ class StateProvider with ChangeNotifier{
 
   //获取省份接口
   getProvince() async{
-
     //方案1
     HttpUtil.get(
       stateUrl,
