@@ -11,6 +11,8 @@ import 'package:flutter_coolweather/app/widgets/load_state_widget.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:provider/provider.dart';
 
+import '../model/state_model.dart';
+
 
 // ignore: must_be_immutable
 class WeatherPage extends StatelessWidget{
@@ -60,15 +62,15 @@ class WeatherPage extends StatelessWidget{
     //当前的
     _layoutState = Provider.of<GankProvider>(context,listen: false).layoutState;
 
-    // if(heList.length == 0){
-    //   return LoadStateLayout(
-    //     state: _layoutState,
-    //     emptyRetry: () {
-    //       _layoutState = LoadState.State_Loading;
-    //       mockNetworkData(context);
-    //     }
-    //   );
-    // }else {
+    if(heList.length == 0){
+      return LoadStateLayout(
+        state: _layoutState,
+        emptyRetry: () {
+          _layoutState = LoadState.State_Loading;
+          mockNetworkData(context);
+        }
+      );
+    }else {
       return LoadStateLayout(
         state: _layoutState,
         emptyRetry: () {
@@ -133,8 +135,8 @@ class WeatherPage extends StatelessWidget{
                                     context,
                                     ShowCupertinoDialog(
                                       items: provinceList,
-                                      onTap: (int index, String res) {
-                                        print('object$index + $res');
+                                      onTap: (int index, ProvinceModel res) {
+                                        print('object$index +'+res.name);
                                       },
                                     ),
                                   );
@@ -256,7 +258,7 @@ class WeatherPage extends StatelessWidget{
           ),
         ),
       );
-    //}
+    }
   }
 
   Widget buildItem(BuildContext context, int index){
