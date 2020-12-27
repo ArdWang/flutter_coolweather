@@ -5,6 +5,8 @@ import 'package:flutter_coolweather/app/pages/weather/weather_pop_page.dart';
 import 'package:flutter_coolweather/app/provider/gank_provider.dart';
 import 'package:flutter_coolweather/app/provider/state_provider.dart';
 import 'package:flutter_coolweather/app/provider/weather_provider.dart';
+import 'package:flutter_coolweather/app/utils/function_util.dart';
+import 'package:flutter_coolweather/app/utils/show_bottom_dialog.dart';
 import 'package:flutter_coolweather/app/widgets/load_state_widget.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:provider/provider.dart';
@@ -123,9 +125,20 @@ class WeatherPage extends StatelessWidget{
                               onPressed: (){
                                 if (provinceList.length > 0) {
                                   //执行点击事件
-                                  Navigator.of(context).push(
-                                    WeatherPopPage(provinceList),
+                                  // Navigator.of(context).push(
+                                  //   WeatherPopPage(provinceList),
+                                  // );
+
+                                  FunctionUtil.bottomSheetDialog(
+                                    context,
+                                    ShowCupertinoDialog(
+                                      items: provinceList,
+                                      onTap: (int index, String res) {
+                                        print('object$index + $res');
+                                      },
+                                    ),
                                   );
+
                                 }else{
                                   print("还不能执行操作!");
                                 }
