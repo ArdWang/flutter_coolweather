@@ -18,14 +18,17 @@ class _IndexPageState extends State<IndexPage> {
   final List<BottomNavigationBarItem> bottomTabs = [
     BottomNavigationBarItem(
         icon: Icon(CupertinoIcons.home),
+        // ignore: deprecated_member_use
         title: Text('首页')
     ),
     BottomNavigationBarItem(
         icon: Icon(CupertinoIcons.brightness),
+        // ignore: deprecated_member_use
         title: Text('天气')
     ),
     BottomNavigationBarItem(
         icon: Icon(CupertinoIcons.heart),
+        // ignore: deprecated_member_use
         title: Text('干货')
     ),
   ];
@@ -39,17 +42,18 @@ class _IndexPageState extends State<IndexPage> {
   int currentIndex = 0;
   var currentPage;
 
-
   @override
   void setState(fn) {
     super.setState(fn);
   }
+
 
   @override
   void initState() {
     currentPage = tabBodies[currentIndex];
     super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {

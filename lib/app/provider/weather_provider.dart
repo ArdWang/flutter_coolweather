@@ -12,6 +12,7 @@ class WeatherProvider with ChangeNotifier{
 
   String serverAddress = "https://free-api.heweather.com/";
 
+  //注册和风天气 Apikey
   String weatherKey = "c0d50dd43adb4a62aff5f3f728941082";
 
   final headers = {
@@ -43,8 +44,5 @@ class WeatherProvider with ChangeNotifier{
       }
     );
   }
-
-
-
 
 }

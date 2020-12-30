@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_coolweather/app/provider/gank_provider.dart';
+import 'package:flutter_coolweather/app/provider/news_provider.dart';
 import 'package:flutter_coolweather/app/provider/state_provider.dart';
 import 'package:flutter_coolweather/app/provider/weather_provider.dart';
 
@@ -13,7 +14,8 @@ void main() {
       providers:[
         ChangeNotifierProvider(create: (_) => StateProvider()),
         ChangeNotifierProvider(create: (_) => GankProvider()),
-        ChangeNotifierProvider(create: (_) => WeatherProvider())
+        ChangeNotifierProvider(create: (_) => WeatherProvider()),
+        ChangeNotifierProvider(create: (_) => NewsProvider())
       ],
       child: MyApp(),
     )
