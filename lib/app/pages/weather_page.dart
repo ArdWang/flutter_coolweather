@@ -47,7 +47,10 @@ class WeatherPage extends StatelessWidget{
             if (snapshot.hasData) {
               heList = Provider.of<WeatherProvider>(context, listen: true).heList;
               provinceList = Provider.of<StateProvider>(context, listen: true).provinceList;
-              defaultName = heList[0].basic.location;
+              // 如果 当前的数据不为空的时候 进入操作
+              if(heList.length > 0) {
+                defaultName = heList[0].basic.location;
+              }
               return Container(
                 child: _loadStateLayout(context),
               );
@@ -58,6 +61,7 @@ class WeatherPage extends StatelessWidget{
       ),
     );
   }
+
 
   // 加载状态栏
   Widget _loadStateLayout(BuildContext context){

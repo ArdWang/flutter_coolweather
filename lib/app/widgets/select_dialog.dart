@@ -171,12 +171,8 @@ class SelectDialog extends Dialog {
             getWeather(context);
             // 获取天气数据 首先关闭
             Navigator.pop(context);
-
-
           }
-
           break;
-
         }
       },
       child: Container(

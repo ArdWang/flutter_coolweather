@@ -102,7 +102,6 @@ class HomePage extends StatelessWidget{
             )
           )
         //显示布局
-
       );
     //}
   }
@@ -165,7 +164,6 @@ class HomePage extends StatelessWidget{
           ],
         ),
       );
-      
     }else if(n.category == 1){
 
       _controller = VideoPlayerController.network(
@@ -201,7 +199,6 @@ class HomePage extends StatelessWidget{
       );
 
     }else{
-
       //不显示图片和视频
       return Container(
         child: Text(
@@ -219,6 +216,8 @@ class HomePage extends StatelessWidget{
         
       },
       child: CachedNetworkImage(
+        width: 100.0,
+        height: 80.0,
         imageUrl: img,
         placeholder: (context, url) =>
             Container(
@@ -240,7 +239,6 @@ class HomePage extends StatelessWidget{
     await Provider.of<NewsProvider>(context, listen: false).getNews();
     return "end";
   }
-
 
 
 }
