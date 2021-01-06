@@ -24,7 +24,7 @@ class WeatherPage extends StatelessWidget{
   // 默认城市名
   String defaultName = "北京";
 
-  // 和风天气
+  // 和风天气  不然会报错 定义命名
   List<HeWeather6> heList = [];
 
   //页面加载状态，默认为加载中
