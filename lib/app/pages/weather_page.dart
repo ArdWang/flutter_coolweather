@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_coolweather/app/model/state_model.dart';
 import 'package:flutter_coolweather/app/model/weather_model.dart';
-import 'package:flutter_coolweather/app/pages/weather/weather_pop_page.dart';
+//import 'package:flutter_coolweather/app/pages/weather/weather_pop_page.dart';
 import 'package:flutter_coolweather/app/provider/gank_provider.dart';
 import 'package:flutter_coolweather/app/provider/state_provider.dart';
 import 'package:flutter_coolweather/app/provider/weather_provider.dart';
-import 'package:flutter_coolweather/app/utils/function_util.dart';
-import 'package:flutter_coolweather/app/utils/show_bottom_dialog.dart';
+// import 'package:flutter_coolweather/app/utils/function_util.dart';
+// import 'package:flutter_coolweather/app/utils/show_bottom_dialog.dart';
 import 'package:flutter_coolweather/app/widgets/load_state_widget.dart';
+import 'package:flutter_coolweather/app/widgets/select_dialog.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:provider/provider.dart';
+
+import '../model/state_model.dart';
 
 
 // ignore: must_be_immutable
@@ -44,6 +47,10 @@ class WeatherPage extends StatelessWidget{
             if (snapshot.hasData) {
               heList = Provider.of<WeatherProvider>(context, listen: true).heList;
               provinceList = Provider.of<StateProvider>(context, listen: true).provinceList;
+              // 如果 当前的数据不为空的时候 进入操作
+              if(heList.length > 0) {
+                defaultName = heList[0].basic.location;
+              }
               return Container(
                 child: _loadStateLayout(context),
               );
@@ -55,20 +62,21 @@ class WeatherPage extends StatelessWidget{
     );
   }
 
+
   // 加载状态栏
   Widget _loadStateLayout(BuildContext context){
     //当前的
     _layoutState = Provider.of<GankProvider>(context,listen: false).layoutState;
 
-    // if(heList.length == 0){
-    //   return LoadStateLayout(
-    //     state: _layoutState,
-    //     emptyRetry: () {
-    //       _layoutState = LoadState.State_Loading;
-    //       mockNetworkData(context);
-    //     }
-    //   );
-    // }else {
+    if(heList.length == 0){
+      return LoadStateLayout(
+        state: _layoutState,
+        emptyRetry: () {
+          _layoutState = LoadState.State_Loading;
+          mockNetworkData(context);
+        }
+      );
+    }else {
       return LoadStateLayout(
         state: _layoutState,
         emptyRetry: () {
@@ -123,25 +131,26 @@ class WeatherPage extends StatelessWidget{
                                   )
                               ),
                               onPressed: (){
-                                if (provinceList.length > 0) {
+                                //if (provinceList.length > 0) {
                                   //执行点击事件
                                   // Navigator.of(context).push(
                                   //   WeatherPopPage(provinceList),
                                   // );
 
-                                  FunctionUtil.bottomSheetDialog(
-                                    context,
-                                    ShowCupertinoDialog(
-                                      items: provinceList,
-                                      onTap: (int index, String res) {
-                                        print('object$index + $res');
-                                      },
-                                    ),
-                                  );
+                                  // FunctionUtil.bottomSheetDialog(
+                                  //   context,
+                                  //   ShowCupertinoDialog(
+                                  //     items: provinceList,
+                                  //     onTap: (int index, ProvinceModel res) {
+                                  //       print('object$index +'+res.name);
+                                  //     },
+                                  //   ),
+                                  // );
+                                  showDialog(context: context,builder: (context) => SelectDialog("城市选择"),);
 
-                                }else{
-                                  print("还不能执行操作!");
-                                }
+                                // }else{
+                                //   print("还不能执行操作!");
+                                // }
                               },
                             ),
                           ),
@@ -151,7 +160,7 @@ class WeatherPage extends StatelessWidget{
                             child: Text(
                               heList[0].now.tmp+"°",
                               style: TextStyle(
-                                  fontSize: 100.0,
+                                  fontSize: 80.0,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.grey
                               ),
@@ -171,7 +180,7 @@ class WeatherPage extends StatelessWidget{
                         child: Text(
                           heList[0].now.condTxt,
                           style: TextStyle(
-                              fontSize: 60.0,
+                              fontSize: 45.0,
                               fontWeight: FontWeight.bold,
                               color: Colors.grey
                           ),
@@ -179,7 +188,7 @@ class WeatherPage extends StatelessWidget{
                       ),
                       //右边显示 最近7天的温度显示
                       Container(
-                          margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                          margin: EdgeInsets.fromLTRB(10, 10, 5, 10),
                           child: FlatButton(
                             child: Text(
                                 "最近7天的天气",
@@ -256,7 +265,7 @@ class WeatherPage extends StatelessWidget{
           ),
         ),
       );
-    //}
+    }
   }
 
   Widget buildItem(BuildContext context, int index){
@@ -289,10 +298,19 @@ class WeatherPage extends StatelessWidget{
 
   // 获取网络数据
   Future<String> mockNetworkData(BuildContext context) async{
-    await Provider.of<WeatherProvider>(context, listen: false).getWeather(defaultCode);
-    await Provider.of<StateProvider>(context, listen: false).getProvince();
+    Future.wait<dynamic>([getWeather(context)]);
+    //await
+    //await Provider.of<StateProvider>(context, listen: false).getProvince();
     return "end";
   }
+  
+  getWeather(BuildContext context) async{
+    await Provider.of<WeatherProvider>(context, listen: false).getWeather(defaultCode);
+  }
+  
+  // getState(BuildContext context) async{
+  //   await Provider.of<StateProvider>(context, listen: false).getProvince();
+  // }
 
 }
 

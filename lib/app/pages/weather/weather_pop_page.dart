@@ -36,6 +36,7 @@ class WeatherPopPage<T> extends PopupRoute<T>{
     return _animationController;
   }
 
+
   @override
   Widget buildPage(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
     return MediaQuery.removePadding(
@@ -58,7 +59,6 @@ class WeatherPopPage<T> extends PopupRoute<T>{
         )
     );
   }
-
 }
 
 
@@ -82,6 +82,7 @@ class WeatherPageShow extends StatelessWidget{
     );
   }
 
+
   Widget buildItem(BuildContext context, int index){
     ProvinceModel p = provinceList[index];
     //获取数据
@@ -100,6 +101,5 @@ class WeatherPageShow extends StatelessWidget{
       ),
     );
   }
-
 
 }

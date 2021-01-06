@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_coolweather/app/model/city_model.dart';
+import 'package:flutter_coolweather/app/model/country_model.dart';
 import 'package:flutter_coolweather/app/model/state_model.dart';
 import 'package:flutter_coolweather/app/service/service_method.dart';
 import 'package:flutter_coolweather/app/utils/httputil.dart';
@@ -11,12 +13,16 @@ class StateProvider with ChangeNotifier{
 
   final stateUrl = APP_CITY_SERVICE_ADDRE+"api/china";
 
-  final cityUrl = APP_CITY_SERVICE_ADDRE+"api/china/{pid}";
+  final cityUrl = APP_CITY_SERVICE_ADDRE+"api/china/";
 
   final countryUrl = APP_CITY_SERVICE_ADDRE+"api/china/{pid}/{cid}";
 
   // 获取省份列表
   List<ProvinceModel> provinceList = [];
+
+  List<CitiesModel> citiesList = [];
+
+  List<CountriesModel> countriesList = [];
 
   String errorMsg = "";
 
@@ -47,5 +53,41 @@ class StateProvider with ChangeNotifier{
     //   notifyListeners();
     // });
   }
+
+  // 获取市列表
+  getCity(String pid) async{
+    HttpUtil.get(
+        stateUrl+"/"+pid,
+        headers: headers,
+        success: (resp){
+          citiesList = CityModel.fromJson(resp).data;
+          notifyListeners();
+        },
+        error: (err){
+          errorMsg = err;
+          notifyListeners();
+        }
+    );
+  }
+
+
+  getCountry(String pid,String cid) async{
+    HttpUtil.get(
+        stateUrl+"/"+pid+"/"+cid,
+        headers: headers,
+        success: (resp){
+          countriesList = CountryModel.fromJson(resp).data;
+          notifyListeners();
+        },
+        error: (err){
+          errorMsg = err;
+          notifyListeners();
+        }
+    );
+  }
+
+
+
+
 
 }
