@@ -10,12 +10,10 @@ import 'gank/photo_gallery_page.dart';
 
 
 /*
- * 错误显示
- * Flutter Incorrect use of ParentDataWidget
+    错误显示
+    Flutter Incorrect use of ParentDataWidget
     提示报错，并且在release版本下无法显示界面，找到原因是使用了**Expanded**控件，
-
     经过排查后发现是Expanded、Flexible等组件，在“Container、Padding、Stack”组件中导致的。
-
     切记：Expanded、Flexible只在Row、Column等组件内，不在其他组件内使用。
  */
 
