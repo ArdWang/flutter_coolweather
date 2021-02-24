@@ -1,4 +1,5 @@
 class NewsModel {
+
   int code;
   String message;
   List<Data> data;
@@ -66,6 +67,7 @@ class Data {
 }
 
 class News {
+
   String c;
   String j;
   String jn;

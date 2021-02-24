@@ -19,7 +19,6 @@ class GankProvider with ChangeNotifier{
 
   GankModel gankModel;
 
-
   // 需要传入当前的页码
   getGank(String page) async{
     HttpUtil.get(
@@ -43,9 +42,5 @@ class GankProvider with ChangeNotifier{
         }
     );
   }
-
-
-
-
 
 }

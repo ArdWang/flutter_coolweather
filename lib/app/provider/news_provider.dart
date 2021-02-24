@@ -42,12 +42,5 @@ class NewsProvider with ChangeNotifier{
         }
     );
   }
-
-
-
-
-
-
-
 }
 
