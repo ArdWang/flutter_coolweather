@@ -7,6 +7,8 @@ import 'package:flutter_coolweather/app/pages/weather_page.dart';
 //import 'package:flutter_coolweather/app/pages/weather_new_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'gank_new_page.dart';
+
 
 class IndexPage extends StatefulWidget{
   @override
@@ -36,7 +38,7 @@ class _IndexPageState extends State<IndexPage> {
   final List<Widget> tabBodies = [
     HomePage(),
     WeatherPage(),
-    GankPage()
+    GankNewPage()
   ];
 
   int currentIndex = 0;
